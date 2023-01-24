@@ -1,4 +1,4 @@
-namespace TodoItem.Models
+namespace Exercise2.Models
 {
     public class TodoItem
     {

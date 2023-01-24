@@ -1,4 +1,4 @@
-namespace TodoItem.Models
+namespace Exercise2.Models
 {
     public class TodoList
     { 
@@ -12,8 +12,12 @@ namespace TodoItem.Models
             todoItems = new List<TodoItem>();
         }
 
-        public void AddTodoItem(){
-            //add item to list
+        public void AddTodoItem(TodoItem todoItem){
+            this.todoItems.Add(todoItem);
+        }
+
+        public int countItems(){
+            return this.todoItems.Count();
         }
 
         public void RemoveTodoItem(){

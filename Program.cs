@@ -1,6 +1,6 @@
-﻿using TodoItem.Models;
+﻿using Exercise2.Models;
 
-namespace TodoItem
+namespace Exercise2
 {
     public class Program
     {
@@ -12,7 +12,7 @@ namespace TodoItem
 
             while (isContinue)
             {
-                Console.WriteLine("\n\n======= MENU =======\n");
+                Console.WriteLine("\n\n======= MAIN MENU =======\n");
                 Console.WriteLine("1 -  Display All Lists");
                 Console.WriteLine("2 -  Show Items");
                 Console.WriteLine("3 -  Create New List");
@@ -37,7 +37,9 @@ namespace TodoItem
                             {
                                 Console.WriteLine("\n\nList #" + myLists[i].Id + " : " + myLists[i].Name);
                             }
-                        } else {
+                        }
+                        else
+                        {
                             Console.WriteLine("\n\nList is EMPTY...");
                         }
 
@@ -76,20 +78,91 @@ namespace TodoItem
                     case "4":
                         Console.Write("\n\n===== Select List =====\n\n");
 
-                        Console.Write("Enter List ID: ");
-                        int listIndex =  Int32.Parse(Console.ReadLine()) - 1;
+                        if (myLists.Count() > 0)
+                        {
+                            Console.Write("Enter List ID: ");
+                            int listIndex = Int32.Parse(Console.ReadLine()) - 1;
 
-                        Console.WriteLine("\n\nSelected List #" + myLists[listIndex].Id + " : " + myLists[listIndex].Name);
-                        
-                        // If 4 is selected, the program should first ask for the id of the list that is to be selected. 
-                        // If a list is not found, display the origins menu again. 
-                        // If a list is found, display another menu with the following:
+                            // If 4 is selected, the program should first ask for the id of the list that is to be selected. 
+                            // If a list is not found, display the origins menu again. 
+                            // If a list is found, display another menu with the following:
 
-                        // 1 - Display all Items
-                        // 2 - Create New Item
-                        // 3 - Delete Item
-                        // 4 - Update Item
-                        // 5 - Go back
+                            bool isSelectContinue = true;
+
+                            while (isSelectContinue)
+                            {
+                                Console.WriteLine("\n\n======= MENU for List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
+
+                                Console.WriteLine("1 -  Display All Items");
+                                Console.WriteLine("2 -  Create New Item");
+                                Console.WriteLine("3 -  Delete Item");
+                                Console.WriteLine("4 -  Update Item");
+                                Console.WriteLine("5 -  Go back");
+
+                                Console.Write("\nEnter Number: ");
+                                choice = Console.ReadLine();
+
+                                switch (choice)
+                                {
+                                    case "1":
+                                        Console.WriteLine("\n\n======= Display All Items =======\n");
+
+                                        // If 1 is  selected in this secondary menu, then display all items in the list. 
+                                        // It should show the id, content and status of the item.
+
+                                        break;
+                                    case "2":
+                                        Console.WriteLine("\n\n======= Create New Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
+
+                                        // If 2 is selected, ask the user to input content for the new item and 
+                                        // create an instance of TodoItem for the list. 
+                                        // Take note that the id value should be one number higher than the previous item in the items of the list. 
+                                        // If no items are in the list then default to 1. 
+                                        // After creating, the program should go back to the secondary menu (item d in logic).
+
+                                        Console.Write("Enter new item: ");
+                                        string newItem = Console.ReadLine();
+
+                                        //How to get number of items inside list....
+                                        int itemCount = myLists[listIndex].countItems();
+
+                                        TodoItem todoItem = new TodoItem(itemCount + 1, newItem);
+                                        myLists[listIndex].AddTodoItem(todoItem);
+
+                                        Console.WriteLine("\nItem Successfully Added!");
+                                        Console.WriteLine("There are now " + myLists[listIndex].countItems() + " item/s on the list...");
+
+                                        break;
+                                    case "3":
+                                        Console.WriteLine("\n\n======= Delete Item =======\n");
+
+                                        // If 3 is selected, ask the user to input the id of the item to delete. 
+                                        // If an item is found, it should delete that item from the list. 
+                                        // If not, display “Invalid id” and go back to the secondary menu (item d in logic).
+
+                                        break;
+                                    case "4":
+                                        Console.WriteLine("\n\n======= Update Items =======\n");
+
+                                        // If 4 is selected, ask the user to input the id of the item to delete. 
+                                        // If an item is found, invoke the update() method of that item changing its status. 
+                                        // If an item is not found, display “Invalid id” and go back to the secondary menu (item d in logic).
+
+                                        break;
+                                    case "5":
+                                        // Go back
+                                        isSelectContinue = false;
+                                        break;
+                                    default:
+                                        Console.WriteLine("Invalid choice. Try again");
+                                        break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nList is EMPTY...");
+                        }
 
                         break;
 
@@ -102,7 +175,6 @@ namespace TodoItem
                         Console.Write("Invalid Choice. Try Again");
                         break;
                 }
-
             }
         }
     }

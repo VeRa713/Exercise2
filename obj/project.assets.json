@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DANIE9820\\Downloads\\CSharp Practice\\TodoItem\\TodoItem.csproj",
-      "projectName": "TodoItem",
-      "projectPath": "C:\\Users\\DANIE9820\\Downloads\\CSharp Practice\\TodoItem\\TodoItem.csproj",
+      "projectUniqueName": "C:\\Users\\DANIE9820\\Downloads\\CSharp Practice\\TodoItem\\Exercise2.csproj",
+      "projectName": "Exercise2",
+      "projectPath": "C:\\Users\\DANIE9820\\Downloads\\CSharp Practice\\TodoItem\\Exercise2.csproj",
       "packagesPath": "C:\\Users\\DANIE9820\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\DANIE9820\\Downloads\\CSharp Practice\\TodoItem\\obj\\",
       "projectStyle": "PackageReference",
