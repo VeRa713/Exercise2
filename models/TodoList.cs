@@ -48,8 +48,7 @@ namespace Exercise2.Models
         {
             foreach (TodoItem item in this.todoItems)
             {
-                Console.WriteLine("\nItem #" + item.Id);
-                Console.WriteLine("Content: " + item.Content);
+                Console.WriteLine("\n\nItem #" + item.Id + " : " + item.Content);
                 Console.WriteLine("Status: " + item.Status);
             }
         }
