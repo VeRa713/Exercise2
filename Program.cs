@@ -57,18 +57,18 @@ namespace Exercise2
                         Console.Write("\n\nEnter List Id: ");
                         int listId = Int32.Parse(Console.ReadLine());
 
-                        var list = myLists.FirstOrDefault(list => list.Id == listId);
+                        var showList = myLists.FirstOrDefault(list => list.Id == listId);
 
-                        if (list != null)
+                        if (showList != null)
                         {
-                            if (list.countItems() > 0)
+                            if (showList.countItems() > 0)
                             {
                                 Console.Write("\n\n===== Showing Items for " + myLists[listId - 1].Name + " =====");
-                                list.GetToDoItems();
+                                showList.GetToDoItems();
                             }
                             else
                             {
-                                Console.WriteLine("\nNo items found for list " + list.Name);
+                                Console.WriteLine("\nNo items found for list " + showList.Name);
                             }
                         }
                         else
@@ -104,132 +104,139 @@ namespace Exercise2
                         if (myLists.Count() > 0)
                         {
                             Console.Write("Enter List ID: ");
-                            int listIndex = Int32.Parse(Console.ReadLine()) - 1;
+                            int listIndex = Int32.Parse(Console.ReadLine());
+
+                            var selectList = myLists.FirstOrDefault(list => list.Id == listIndex);
 
                             // If 4 is selected, the program should first ask for the id of the list that is to be selected. 
                             // If a list is not found, display the origins menu again. 
                             // If a list is found, display another menu with the following:
 
-                            bool isSelectContinue = true;
-
-                            while (isSelectContinue)
+                            if (selectList != null)
                             {
-                                Console.WriteLine("\n\n======= MENU for List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
+                                bool isSelectContinue = true;
 
-                                Console.WriteLine("1 -  Display All Items");
-                                Console.WriteLine("2 -  Create New Item");
-                                Console.WriteLine("3 -  Delete Item");
-                                Console.WriteLine("4 -  Update Item");
-                                Console.WriteLine("5 -  Go back");
-
-                                Console.Write("\nEnter Number: ");
-                                choice = Console.ReadLine();
-
-                                switch (choice)
+                                while (isSelectContinue)
                                 {
-                                    case "1":
-                                        Console.WriteLine("\n\n======= Display All Items =======\n");
+                                    Console.WriteLine("\n\n======= MENU for List # " + selectList.Id + " : " + selectList.Name + " =======\n");
 
-                                        // If 1 is  selected in this secondary menu, then display all items in the list. 
-                                        // It should show the id, content and status of the item.
+                                    Console.WriteLine("1 -  Display All Items");
+                                    Console.WriteLine("2 -  Create New Item");
+                                    Console.WriteLine("3 -  Delete Item");
+                                    Console.WriteLine("4 -  Update Item");
+                                    Console.WriteLine("5 -  Go back");
 
-                                        if (myLists[listIndex].countItems() > 0)
-                                        {
+                                    Console.Write("\nEnter Number: ");
+                                    choice = Console.ReadLine();
 
-                                            for (int i = 0; i < myLists[listIndex].countItems(); i++)
+                                    switch (choice)
+                                    {
+                                        case "1":
+                                            Console.WriteLine("\n\n======= Display All Items =======\n");
+
+                                            // If 1 is  selected in this secondary menu, then display all items in the list. 
+                                            // It should show the id, content and status of the item.
+
+                                            if (selectList.countItems() > 0)
                                             {
-                                                Console.WriteLine("\nItem #" + myLists[listIndex].getItemId(i) + " : " + myLists[listIndex].getItemName(i));
-                                                Console.WriteLine("Status: " + myLists[listIndex].getStatus(i));
+
+                                                for (int i = 0; i < selectList.countItems(); i++)
+                                                {
+                                                    Console.WriteLine("\nItem #" + selectList.getItemId(i) + " : " + selectList.getItemName(i));
+                                                    Console.WriteLine("Status: " + selectList.getStatus(i));
+                                                }
                                             }
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("\n\nNo items found in list: " + myLists[listIndex].Name);
-                                        }
+                                            else
+                                            {
+                                                Console.WriteLine("\n\nNo items found in list: " + selectList.Name);
+                                            }
 
-                                        break;
+                                            break;
 
-                                    case "2":
-                                        Console.WriteLine("\n\n======= Create New Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
+                                        case "2":
+                                            Console.WriteLine("\n\n======= Create New Item for " + "List # " + selectList.Id + " : " + selectList.Name + " =======\n");
 
-                                        // If 2 is selected, ask the user to input content for the new item and 
-                                        // create an instance of TodoItem for the list. 
-                                        // Take note that the id value should be one number higher than the previous item in the items of the list. 
-                                        // If no items are in the list then default to 1. 
-                                        // After creating, the program should go back to the secondary menu (item d in logic).
+                                            // If 2 is selected, ask the user to input content for the new item and 
+                                            // create an instance of TodoItem for the list. 
+                                            // Take note that the id value should be one number higher than the previous item in the items of the list. 
+                                            // If no items are in the list then default to 1. 
+                                            // After creating, the program should go back to the secondary menu (item d in logic).
 
-                                        Console.Write("Enter new item: ");
-                                        string newItem = Console.ReadLine();
+                                            Console.Write("Enter new item: ");
+                                            string newItem = Console.ReadLine();
 
-                                        int itemCount = myLists[listIndex].countItems();
+                                            int itemCount = selectList.countItems();
 
-                                        TodoItem todoItem = new TodoItem(itemCount + 1, newItem);
-                                        myLists[listIndex].AddTodoItem(todoItem);
+                                            TodoItem todoItem = new TodoItem(itemCount + 1, newItem);
+                                            selectList.AddTodoItem(todoItem);
 
-                                        Console.WriteLine("\nItem Successfully Added!");
-                                        Console.WriteLine("There are now " + myLists[listIndex].countItems() + " item/s on the list...");
+                                            Console.WriteLine("\nItem Successfully Added!");
+                                            Console.WriteLine("There are now " + selectList.countItems() + " item/s on the list...");
 
-                                        break;
+                                            break;
 
-                                    case "3":
-                                        Console.WriteLine("\n\n======= Delete Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
+                                        case "3":
+                                            Console.WriteLine("\n\n======= Delete Item for " + "List # " + selectList.Id + " : " + selectList.Name + " =======\n");
 
-                                        // If 3 is selected, ask the user to input the id of the item to delete. 
-                                        // If an item is found, it should delete that item from the list. 
-                                        // If not, display “Invalid id” and go back to the secondary menu (item d in logic).
+                                            // If 3 is selected, ask the user to input the id of the item to delete. 
+                                            // If an item is found, it should delete that item from the list. 
+                                            // If not, display “Invalid id” and go back to the secondary menu (item d in logic).
 
-                                        Console.WriteLine("Delete Item ID: ");
-                                        int deleteId = Int32.Parse(Console.ReadLine());
+                                            Console.WriteLine("Delete Item ID: ");
+                                            int deleteId = Int32.Parse(Console.ReadLine());
 
-                                        if (deleteId <= 0 || deleteId > myLists[listIndex].countItems())
-                                        {
-                                            Console.WriteLine("\nInvalid id. Try Again.");
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("\nDeleting item with id: " + deleteId + "...");
+                                            if (deleteId <= 0 || deleteId > selectList.countItems())
+                                            {
+                                                Console.WriteLine("\nInvalid id. Try Again.");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("\nDeleting item with id: " + deleteId + "...");
 
-                                            myLists[listIndex].RemoveTodoItem(deleteId);
+                                                selectList.RemoveTodoItem(deleteId);
 
-                                            Console.WriteLine("Delete Successful!");
-                                        }
+                                                Console.WriteLine("Delete Successful!");
+                                            }
 
-                                        //Issue with this, creating new items after deleting results to duplicate itemId
+                                            //Issue with this, creating new items after deleting results to duplicate itemId
 
-                                        break;
+                                            break;
 
-                                    case "4":
-                                        Console.WriteLine("\n\n======= Update Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
+                                        case "4":
+                                            Console.WriteLine("\n\n======= Update Item for " + "List # " + selectList.Id + " : " + selectList.Name + " =======\n");
 
-                                        // If 4 is selected, ask the user to input the id of the item to delete. 
-                                        // If an item is found, invoke the update() method of that item changing its status. 
-                                        // If an item is not found, display “Invalid id” and go back to the secondary menu (item d in logic).
+                                            // If 4 is selected, ask the user to input the id of the item to delete. 
+                                            // If an item is found, invoke the update() method of that item changing its status. 
+                                            // If an item is not found, display “Invalid id” and go back to the secondary menu (item d in logic).
 
-                                        Console.Write("Enter Item Id: ");
-                                        int updateId = Int32.Parse(Console.ReadLine());
+                                            Console.Write("Enter Item Id: ");
+                                            int updateId = Int32.Parse(Console.ReadLine());
 
-                                        if (myLists[listIndex].FindItemById(updateId))
-                                        {
-                                            var item = myLists[listIndex].GetListById(updateId);
+                                            if (selectList.FindItemById(updateId))
+                                            {
+                                                var item = selectList.GetListById(updateId);
 
-                                            item.Update();
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("\nInvalid id.");
-                                        }
+                                                item.Update();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("\nInvalid id.");
+                                            }
 
-                                        break;
+                                            break;
 
-                                    case "5":
-                                        // Go back
-                                        isSelectContinue = false;
-                                        break;
+                                        case "5":
+                                            // Go back
+                                            isSelectContinue = false;
+                                            break;
 
-                                    default:
-                                        Console.WriteLine("Invalid choice. Try again");
-                                        break;
+                                        default:
+                                            Console.WriteLine("Invalid choice. Try again");
+                                            break;
+                                    }
                                 }
+                            } else {
+                                Console.WriteLine("\n\nList does not exist.");
                             }
                         }
                         else
