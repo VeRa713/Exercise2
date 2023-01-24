@@ -123,7 +123,6 @@ namespace Exercise2
                                         Console.Write("Enter new item: ");
                                         string newItem = Console.ReadLine();
 
-                                        //How to get number of items inside list....
                                         int itemCount = myLists[listIndex].countItems();
 
                                         TodoItem todoItem = new TodoItem(itemCount + 1, newItem);
