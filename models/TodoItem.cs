@@ -23,7 +23,6 @@ namespace TodoItem.Models
                 case "done":
                     return false;
                 default:
-                    //dont do anything
                     return false;            
             }
         }
