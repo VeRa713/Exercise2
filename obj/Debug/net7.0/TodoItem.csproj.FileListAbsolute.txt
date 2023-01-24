@@ -1,0 +1,15 @@
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\bin\Debug\net7.0\TodoItem.exe
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\bin\Debug\net7.0\TodoItem.deps.json
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\bin\Debug\net7.0\TodoItem.runtimeconfig.json
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\bin\Debug\net7.0\TodoItem.dll
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\bin\Debug\net7.0\TodoItem.pdb
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.csproj.AssemblyReference.cache
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.AssemblyInfoInputs.cache
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.AssemblyInfo.cs
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.csproj.CoreCompileInputs.cache
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.dll
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\refint\TodoItem.dll
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.pdb
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\TodoItem.genruntimeconfig.cache
+C:\Users\DANIE9820\Downloads\CSharp Practice\TodoItem\obj\Debug\net7.0\ref\TodoItem.dll
