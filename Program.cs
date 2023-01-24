@@ -29,6 +29,7 @@ namespace TodoItem
 
                         // If 1 is selected, it displays all the current TodoLists in myLists. 
                         // The interface should display the id and name of a list together with the number of items.
+
                         if (myLists.Count() > 0)
                         {
 
@@ -73,8 +74,13 @@ namespace TodoItem
                         break;
 
                     case "4":
-                        Console.Write("Select");
+                        Console.Write("\n\n===== Select List =====\n\n");
 
+                        Console.Write("Enter List ID: ");
+                        int listIndex =  Int32.Parse(Console.ReadLine()) - 1;
+
+                        Console.WriteLine("\n\nSelected List #" + myLists[listIndex].Id + " : " + myLists[listIndex].Name);
+                        
                         // If 4 is selected, the program should first ask for the id of the list that is to be selected. 
                         // If a list is not found, display the origins menu again. 
                         // If a list is found, display another menu with the following:
