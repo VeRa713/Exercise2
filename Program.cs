@@ -29,9 +29,15 @@ namespace TodoItem
 
                         // If 1 is selected, it displays all the current TodoLists in myLists. 
                         // The interface should display the id and name of a list together with the number of items.
+                        if (myLists.Count() > 0)
+                        {
 
-                        for(int i = 0; i < myLists.Count(); i++){
-                            Console.WriteLine("\n\nList #" + myLists[i].Id + " : " + myLists[i].Name);
+                            for (int i = 0; i < myLists.Count(); i++)
+                            {
+                                Console.WriteLine("\n\nList #" + myLists[i].Id + " : " + myLists[i].Name);
+                            }
+                        } else {
+                            Console.WriteLine("\n\nList is EMPTY...");
                         }
 
                         break;
@@ -56,7 +62,7 @@ namespace TodoItem
                         int todoListId = myLists.Count() + 1;
 
                         TodoList todoList = new TodoList(todoListId, name);
-                        
+
                         myLists.Add(todoList);
 
                         // If 3 is selected, ask the user to enter a name and 
