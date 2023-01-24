@@ -125,6 +125,7 @@ namespace Exercise2
                                         }
 
                                         break;
+                                        
                                     case "2":
                                         Console.WriteLine("\n\n======= Create New Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
 
@@ -146,6 +147,7 @@ namespace Exercise2
                                         Console.WriteLine("There are now " + myLists[listIndex].countItems() + " item/s on the list...");
 
                                         break;
+
                                     case "3":
                                         Console.WriteLine("\n\n======= Delete Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
 
@@ -169,6 +171,7 @@ namespace Exercise2
                                         //Issue with this, creating new items after deleting results to duplicate itemId
 
                                         break;
+
                                     case "4":
                                         Console.WriteLine("\n\n======= Update Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
 
@@ -177,10 +180,12 @@ namespace Exercise2
                                         // If an item is not found, display “Invalid id” and go back to the secondary menu (item d in logic).
 
                                         break;
+
                                     case "5":
                                         // Go back
                                         isSelectContinue = false;
                                         break;
+
                                     default:
                                         Console.WriteLine("Invalid choice. Try again");
                                         break;
