@@ -63,7 +63,7 @@ namespace Exercise2
                         {
                             if (list.countItems() > 0)
                             {
-                                Console.Write("\n\n===== Showing Items for " + myLists[listId-1].Name + " =====");
+                                Console.Write("\n\n===== Showing Items for " + myLists[listId - 1].Name + " =====");
                                 list.GetToDoItems();
                             }
                             else
@@ -179,17 +179,17 @@ namespace Exercise2
                                         // If not, display “Invalid id” and go back to the secondary menu (item d in logic).
 
                                         Console.WriteLine("Delete Item ID: ");
-                                        int itemId = Int32.Parse(Console.ReadLine());
+                                        int deleteId = Int32.Parse(Console.ReadLine());
 
-                                        if (itemId <= 0 || itemId > myLists[listIndex].countItems())
+                                        if (deleteId <= 0 || deleteId > myLists[listIndex].countItems())
                                         {
                                             Console.WriteLine("\nInvalid id. Try Again.");
                                         }
                                         else
                                         {
-                                            Console.WriteLine("\nDeleting item with id: " + itemId + "...");
+                                            Console.WriteLine("\nDeleting item with id: " + deleteId + "...");
 
-                                            myLists[listIndex].RemoveTodoItem(itemId);
+                                            myLists[listIndex].RemoveTodoItem(deleteId);
 
                                             Console.WriteLine("Delete Successful!");
                                         }
@@ -204,6 +204,20 @@ namespace Exercise2
                                         // If 4 is selected, ask the user to input the id of the item to delete. 
                                         // If an item is found, invoke the update() method of that item changing its status. 
                                         // If an item is not found, display “Invalid id” and go back to the secondary menu (item d in logic).
+
+                                        Console.Write("Enter Item Id: ");
+                                        int updateId = Int32.Parse(Console.ReadLine());
+
+                                        if (myLists[listIndex].FindItemById(updateId))
+                                        {
+                                            var item = myLists[listIndex].GetListById(updateId);
+
+                                            item.Update();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("\nInvalid id.");
+                                        }
 
                                         break;
 

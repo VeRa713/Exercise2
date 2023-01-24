@@ -52,5 +52,22 @@ namespace Exercise2.Models
                 Console.WriteLine("Status: " + item.Status);
             }
         }
+
+        public bool FindItemById(int itemId)
+        {
+            bool isFound = false;
+
+            if (this.GetListById(itemId) != null)
+            {
+                isFound = true;
+            }
+
+            return isFound;
+        }
+
+        public TodoItem GetListById(int itemId)
+        {
+            return this.todoItems.FirstOrDefault(item => item.Id == itemId);
+        }
     }
 }
