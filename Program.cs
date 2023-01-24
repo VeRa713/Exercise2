@@ -46,7 +46,7 @@ namespace Exercise2
                         break;
 
                     case "2":
-                        Console.Write("Show Items");
+                        Console.Write("\n\n===== Show Items =====");
 
                         // If 2 is selected, as the user to enter an id of a list. 
                         // If the list is not found, display the original menu again. 
@@ -54,10 +54,38 @@ namespace Exercise2
                         // If there are no items in the list, the program should display 
                         // “No items found for list [name of list]”.
 
+                        Console.Write("\n\nEnter List Id: ");
+                        int listId = Int32.Parse(Console.ReadLine());
+
+                        var list = myLists.FirstOrDefault(list => list.Id == listId);
+
+                        if (list != null)
+                        {
+                            if (list.countItems() > 0)
+                            {
+                                Console.Write("\n\n===== Showing Items for " + myLists[listId-1].Name + " =====");
+                                list.GetToDoItems();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nNo items found for list " + list.Name);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nList does not exist.");
+                        }
+
+
                         break;
 
                     case "3":
                         Console.Write("\n\n===== Create List =====\n\n");
+
+                        // If 3 is selected, ask the user to enter a name and 
+                        // create a new instance of TodoList to be added to myLists. 
+                        // The id of the list should be 1 number higher than the previous list in myLists. 
+                        // If there are no current lists in myList, the starting id is 1.
 
                         Console.Write("Enter Name: ");
                         string name = Console.ReadLine();
@@ -67,11 +95,6 @@ namespace Exercise2
                         TodoList todoList = new TodoList(todoListId, name);
 
                         myLists.Add(todoList);
-
-                        // If 3 is selected, ask the user to enter a name and 
-                        // create a new instance of TodoList to be added to myLists. 
-                        // The id of the list should be 1 number higher than the previous list in myLists. 
-                        // If there are no current lists in myList, the starting id is 1.
 
                         break;
 
@@ -125,7 +148,7 @@ namespace Exercise2
                                         }
 
                                         break;
-                                        
+
                                     case "2":
                                         Console.WriteLine("\n\n======= Create New Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
 
@@ -158,13 +181,16 @@ namespace Exercise2
                                         Console.WriteLine("Delete Item ID: ");
                                         int itemId = Int32.Parse(Console.ReadLine());
 
-                                        if (itemId <= 0 || itemId > myLists[listIndex].countItems()){
+                                        if (itemId <= 0 || itemId > myLists[listIndex].countItems())
+                                        {
                                             Console.WriteLine("\nInvalid id. Try Again.");
-                                        } else {
+                                        }
+                                        else
+                                        {
                                             Console.WriteLine("\nDeleting item with id: " + itemId + "...");
-                                            
+
                                             myLists[listIndex].RemoveTodoItem(itemId);
-                                            
+
                                             Console.WriteLine("Delete Successful!");
                                         }
 
