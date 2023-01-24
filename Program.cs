@@ -110,6 +110,20 @@ namespace Exercise2
                                         // If 1 is  selected in this secondary menu, then display all items in the list. 
                                         // It should show the id, content and status of the item.
 
+                                        if (myLists[listIndex].countItems() > 0)
+                                        {
+
+                                            for (int i = 0; i < myLists[listIndex].countItems(); i++)
+                                            {
+                                                Console.WriteLine("\nItem #" + myLists[listIndex].getItemId(i) + " : " +  myLists[listIndex].getItemName(i));
+                                                Console.WriteLine("Status: " + myLists[listIndex].getStatus(i));
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("\n\nNo items found in list: " + myLists[listIndex].Name);
+                                        }
+
                                         break;
                                     case "2":
                                         Console.WriteLine("\n\n======= Create New Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");

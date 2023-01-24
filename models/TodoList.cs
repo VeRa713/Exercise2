@@ -23,5 +23,17 @@ namespace Exercise2.Models
         public void RemoveTodoItem(){
             //remove item from list
         }
+
+        public int getItemId(int index){
+            return this.todoItems[index].Id;
+        }
+
+        public string getItemName(int index){
+            return this.todoItems[index].Content;
+        }
+
+        public string getStatus(int index){
+            return this.todoItems[index].Status;
+        }
     }
 }
