@@ -115,7 +115,7 @@ namespace Exercise2
 
                                             for (int i = 0; i < myLists[listIndex].countItems(); i++)
                                             {
-                                                Console.WriteLine("\nItem #" + myLists[listIndex].getItemId(i) + " : " +  myLists[listIndex].getItemName(i));
+                                                Console.WriteLine("\nItem #" + myLists[listIndex].getItemId(i) + " : " + myLists[listIndex].getItemName(i));
                                                 Console.WriteLine("Status: " + myLists[listIndex].getStatus(i));
                                             }
                                         }
@@ -147,15 +147,30 @@ namespace Exercise2
 
                                         break;
                                     case "3":
-                                        Console.WriteLine("\n\n======= Delete Item =======\n");
+                                        Console.WriteLine("\n\n======= Delete Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
 
                                         // If 3 is selected, ask the user to input the id of the item to delete. 
                                         // If an item is found, it should delete that item from the list. 
                                         // If not, display “Invalid id” and go back to the secondary menu (item d in logic).
 
+                                        Console.WriteLine("Delete Item ID: ");
+                                        int itemId = Int32.Parse(Console.ReadLine());
+
+                                        if (itemId <= 0 || itemId > myLists[listIndex].countItems()){
+                                            Console.WriteLine("\nInvalid id. Try Again.");
+                                        } else {
+                                            Console.WriteLine("\nDeleting item with id: " + itemId + "...");
+                                            
+                                            myLists[listIndex].RemoveTodoItem(itemId);
+                                            
+                                            Console.WriteLine("Delete Successful!");
+                                        }
+
+                                        //Issue with this, creating new items after deleting results to duplicate itemId
+
                                         break;
                                     case "4":
-                                        Console.WriteLine("\n\n======= Update Items =======\n");
+                                        Console.WriteLine("\n\n======= Update Item for " + "List # " + myLists[listIndex].Id + " : " + myLists[listIndex].Name + " =======\n");
 
                                         // If 4 is selected, ask the user to input the id of the item to delete. 
                                         // If an item is found, invoke the update() method of that item changing its status. 

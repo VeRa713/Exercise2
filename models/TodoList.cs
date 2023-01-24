@@ -20,8 +20,9 @@ namespace Exercise2.Models
             return this.todoItems.Count();
         }
 
-        public void RemoveTodoItem(){
-            //remove item from list
+        public void RemoveTodoItem(int itemId){
+            // this.todoItems.RemoveAt(index);
+            this.todoItems = this.todoItems.Where(item => item.Id != itemId).ToList();
         }
 
         public int getItemId(int index){
