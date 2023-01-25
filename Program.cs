@@ -200,8 +200,6 @@ namespace Exercise2
                                                 Console.WriteLine("Delete Successful!");
                                             }
 
-                                            //Issue with this, creating new items after deleting results to duplicate itemId
-
                                             break;
 
                                         case "4":
