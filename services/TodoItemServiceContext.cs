@@ -1,5 +1,6 @@
 using Exercise2.Models;
 using Exercise2.Interfaces;
+using Exercise2.Conf;
 
 namespace Exercise2.Services
 {
@@ -7,14 +8,20 @@ namespace Exercise2.Services
     {
         // 5.	Create a service that implements ITodoItemService called TodoItemServiceContext 
         // which interacts with ApplicationContext to implement the underlying methods.
-        public void Delete(int listId, TodoItem item)
+        public TodoItemServiceContext()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void Delete(int itemId, TodoItem todoItems)
+        {
+            // this.todoItems = this.todoItems.Where(item => item.Id != itemId).ToList();
         }
 
         public TodoItem FindById(int listId, int id)
         {
-            throw new NotImplementedException();
+            ApplicationContext context = ApplicationContext.Instance;
+            return null;
         }
 
         public List<TodoItem> GetAll(int listId)

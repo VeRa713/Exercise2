@@ -16,27 +16,28 @@ namespace Exercise2.Services
 
         public void Delete(int id)
         {
+            //no menu yet to delete list
             throw new NotImplementedException();
         }
 
         public TodoList FindById(int id)
         {
             ApplicationContext context = ApplicationContext.Instance;
-            return context.GetList().Where(contact => contact.Id == id).FirstOrDefault();
+            return context.GetAll().Where(contact => contact.Id == id).FirstOrDefault();
         }
 
         public List<TodoList> GetAll()
         {
             ApplicationContext context = ApplicationContext.Instance;
 
-            return context.GetList();
+            return context.GetAll();
         }
 
         public TodoList Save(TodoList list)
         {
             ApplicationContext context = ApplicationContext.Instance;
 
-            context.GetList().Add(list);
+            context.GetAll().Add(list);
             
             return list;
         }

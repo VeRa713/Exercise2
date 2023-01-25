@@ -15,8 +15,6 @@ namespace Exercise2
 
         static void Main(string[] args)
         {
-            // List<TodoList> myLists = new List<TodoList>();
-
             ITodoListService todoListService = new TodoListServiceContext();
             List<TodoList> myLists = GetAllLists(todoListService);
 
@@ -118,7 +116,8 @@ namespace Exercise2
                             Console.Write("Enter List ID: ");
                             int listIndex = Int32.Parse(Console.ReadLine());
 
-                            var selectList = myLists.FirstOrDefault(list => list.Id == listIndex);
+                            // var selectList = myLists.FirstOrDefault(list => list.Id == listIndex);
+                            var selectList = todoListService.FindById(listIndex);
 
                             // If 4 is selected, the program should first ask for the id of the list that is to be selected. 
                             // If a list is not found, display the origins menu again. 

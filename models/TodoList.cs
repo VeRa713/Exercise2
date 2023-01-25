@@ -65,6 +65,7 @@ namespace Exercise2.Models
             return isFound;
         }
 
+        //to remove
         public TodoItem GetListById(int itemId)
         {
             return this.todoItems.FirstOrDefault(item => item.Id == itemId);
