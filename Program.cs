@@ -1,12 +1,24 @@
 ﻿using Exercise2.Models;
+using Exercise2.Services;
+using Exercise2.Interfaces;
 
 namespace Exercise2
 {
     public class Program
     {
+        public static List<TodoList> GetAllLists(ITodoListService todoListService)
+        {
+            List<TodoList> myLists = todoListService.GetAll();
+
+            return myLists;
+        }
+
         static void Main(string[] args)
         {
-            List<TodoList> myLists = new List<TodoList>();
+            // List<TodoList> myLists = new List<TodoList>();
+
+            ITodoListService todoListService = new TodoListServiceContext();
+            List<TodoList> myLists = GetAllLists(todoListService);
 
             bool isContinue = true;
 
