@@ -3,7 +3,7 @@ using Exercise2.Interfaces;
 
 namespace Exercise2.Services
 {
-    public class TodoItemServiceContext : ITodoListService
+    public class TodoItemServiceContext : ITodoItemService
     {
         // 5.	Create a service that implements ITodoItemService called TodoItemServiceContext 
         // which interacts with ApplicationContext to implement the underlying methods.
