@@ -7,22 +7,22 @@ namespace Exercise2.Services
     {
         // 5.	Create a service that implements ITodoItemService called TodoItemServiceContext 
         // which interacts with ApplicationContext to implement the underlying methods.
-        public void Delete(int id)
+        public void Delete(int listId, TodoItem item)
         {
             throw new NotImplementedException();
         }
 
-        public TodoList FindById(int id)
+        public TodoItem FindById(int listId, int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<TodoList> GetAll()
+        public List<TodoItem> GetAll(int listId)
         {
             throw new NotImplementedException();
         }
 
-        public TodoList Save(TodoList list)
+        public TodoItem Save(int listId, TodoItem item)
         {
             throw new NotImplementedException();
         }
