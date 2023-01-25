@@ -90,7 +90,7 @@ namespace Exercise2
                         Console.Write("Enter Name: ");
                         string name = Console.ReadLine();
 
-                        int todoListId = myLists.Count() + 1;
+                        int todoListId = myLists.Count() + 1; //should get id of last element in list instead
 
                         TodoList todoList = new TodoList(todoListId, name);
 
@@ -167,7 +167,9 @@ namespace Exercise2
 
                                             int itemCount = selectList.countItems();
 
-                                            TodoItem todoItem = new TodoItem(itemCount + 1, newItem);
+                                            int newId = selectList.getLastId(itemCount);
+
+                                            TodoItem todoItem = new TodoItem(newId, newItem); 
                                             selectList.AddTodoItem(todoItem);
 
                                             Console.WriteLine("\nItem Successfully Added!");

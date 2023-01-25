@@ -69,5 +69,17 @@ namespace Exercise2.Models
         {
             return this.todoItems.FirstOrDefault(item => item.Id == itemId);
         }
+
+        public int getLastId(int itemCount)
+        {
+            if (itemCount > 0)
+            {
+                return this.todoItems.Last().Id + 1;
+            }
+            else
+            {
+                return 1;
+            }
+        }
     }
 }
