@@ -25,7 +25,6 @@ namespace Exercise2.Models
 
         public void RemoveTodoItem(int itemId)
         {
-            // this.todoItems.RemoveAt(index);
             this.todoItems = this.todoItems.Where(item => item.Id != itemId).ToList();
         }
 
@@ -44,32 +43,31 @@ namespace Exercise2.Models
             return this.todoItems[index].Status;
         }
 
-        public void GetToDoItems()
-        {
-            foreach (TodoItem item in this.todoItems)
-            {
-                Console.WriteLine("\n\nItem #" + item.Id + " : " + item.Content);
-                Console.WriteLine("Status: " + item.Status);
-            }
-        }
+        // public void GetToDoItems()
+        // {
+        //     foreach (TodoItem item in this.todoItems)
+        //     {
+        //         Console.WriteLine("\n\nItem #" + item.Id + " : " + item.Content);
+        //         Console.WriteLine("Status: " + item.Status);
+        //     }
+        // }
 
-        public bool FindItemById(int itemId)
-        {
-            bool isFound = false;
+        // public bool FindItemById(int itemId)
+        // {
+        //     bool isFound = false;
 
-            if (this.GetListById(itemId) != null)
-            {
-                isFound = true;
-            }
+        //     if (this.GetListById(itemId) != null)
+        //     {
+        //         isFound = true;
+        //     }
 
-            return isFound;
-        }
+        //     return isFound;
+        // }
 
-        //to remove
-        public TodoItem GetListById(int itemId)
-        {
-            return this.todoItems.FirstOrDefault(item => item.Id == itemId);
-        }
+        // public TodoItem GetListById(int itemId)
+        // {
+        //     return this.todoItems.FirstOrDefault(item => item.Id == itemId);
+        // }
 
         public int getLastId(int itemCount)
         {

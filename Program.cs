@@ -5,18 +5,12 @@ using Exercise2.Interfaces;
 namespace Exercise2
 {
     public class Program
-    {
-        public static List<TodoList> GetAllLists(ITodoListService todoListService)
-        {
-            List<TodoList> myLists = todoListService.GetAll();
-
-            return myLists;
-        }
-
-        static void Main(string[] args)
+    {   static void Main(string[] args)
         {
             ITodoListService todoListService = new TodoListServiceContext();
-            List<TodoList> myLists = GetAllLists(todoListService);
+            TodoItemServiceContext todoItemService = new TodoItemServiceContext();
+
+            List<TodoList> myLists = todoListService.GetAll();
 
             bool isContinue = true;
 
@@ -67,14 +61,15 @@ namespace Exercise2
                         Console.Write("\n\nEnter List Id: ");
                         int listId = Int32.Parse(Console.ReadLine());
 
-                        var showList = myLists.FirstOrDefault(list => list.Id == listId);
+                        // TodoList showList = myLists.FirstOrDefault(list => list.Id == listId)
+                        TodoList showList = todoListService.FindById(listId);
 
                         if (showList != null)
                         {
                             if (showList.countItems() > 0)
                             {
-                                Console.Write("\n\n===== Showing Items for " + myLists[listId - 1].Name + " =====");
-                                showList.GetToDoItems();
+                                Console.Write("\n\n===== Showing Items for " + showList.Name + " =====");
+                                todoItemService.GetAll(listId);
                             }
                             else
                             {
@@ -104,7 +99,7 @@ namespace Exercise2
 
                         TodoList todoList = new TodoList(todoListId, name);
 
-                        myLists.Add(todoList);
+                        todoListService.Save(todoList);
 
                         break;
 
@@ -116,8 +111,8 @@ namespace Exercise2
                             Console.Write("Enter List ID: ");
                             int listIndex = Int32.Parse(Console.ReadLine());
 
-                            // var selectList = myLists.FirstOrDefault(list => list.Id == listIndex);
-                            var selectList = todoListService.FindById(listIndex);
+                            // TodoList selectList = myLists.FirstOrDefault(list => list.Id == listIndex);
+                            TodoList selectList = todoListService.FindById(listIndex);
 
                             // If 4 is selected, the program should first ask for the id of the list that is to be selected. 
                             // If a list is not found, display the origins menu again. 
@@ -150,7 +145,6 @@ namespace Exercise2
 
                                             if (selectList.countItems() > 0)
                                             {
-
                                                 for (int i = 0; i < selectList.countItems(); i++)
                                                 {
                                                     Console.WriteLine("\nItem #" + selectList.getItemId(i) + " : " + selectList.getItemName(i));
@@ -180,8 +174,8 @@ namespace Exercise2
 
                                             int newId = selectList.getLastId(itemCount);
 
-                                            TodoItem todoItem = new TodoItem(newId, newItem); 
-                                            selectList.AddTodoItem(todoItem);
+                                            TodoItem newTodoItem = new TodoItem(newId, newItem); 
+                                            todoItemService.Save(selectList.Id, newTodoItem);
 
                                             Console.WriteLine("\nItem Successfully Added!");
                                             Console.WriteLine("There are now " + selectList.countItems() + " item/s on the list...");
@@ -206,7 +200,8 @@ namespace Exercise2
                                             {
                                                 Console.WriteLine("\nDeleting item with id: " + deleteId + "...");
 
-                                                selectList.RemoveTodoItem(deleteId);
+                                                TodoItem deleteItem = todoItemService.FindById(selectList.Id, deleteId);
+                                                todoItemService.Delete(selectList.Id, deleteItem);
 
                                                 Console.WriteLine("Delete Successful!");
                                             }
@@ -223,11 +218,12 @@ namespace Exercise2
                                             Console.Write("Enter Item Id: ");
                                             int updateId = Int32.Parse(Console.ReadLine());
 
-                                            if (selectList.FindItemById(updateId))
-                                            {
-                                                var item = selectList.GetListById(updateId);
+                                            TodoItem updateItem = todoItemService.FindById(selectList.Id, updateId);
 
-                                                item.Update();
+                                            if (updateItem != null)
+                                            {
+                                                // var item = selectList.GetListById(updateId);
+                                                updateItem.Update();
                                             }
                                             else
                                             {

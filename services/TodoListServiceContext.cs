@@ -9,35 +9,35 @@ namespace Exercise2.Services
         // 4.	Create a service that implements ITodoListService called TodoListServiceContext 
         // which interacts with ApplicationContext to implement the underlying methods.
 
+        private ApplicationContext appInstance;
+        private List<TodoList> todoList;
+
         public TodoListServiceContext()
         {
-
+            appInstance = ApplicationContext.Instance;
+            todoList = appInstance.GetToDoList();
         }
 
         public void Delete(int id)
         {
             //no menu yet to delete list
-            throw new NotImplementedException();
+            TodoList todoListMatch = todoList.SingleOrDefault(x => x.Id == id);
+            todoList.Remove(todoListMatch);
         }
 
         public TodoList FindById(int id)
         {
-            ApplicationContext context = ApplicationContext.Instance;
-            return context.GetAll().Where(contact => contact.Id == id).FirstOrDefault();
+            return todoList.Where(list => list.Id == id).FirstOrDefault();
         }
 
         public List<TodoList> GetAll()
         {
-            ApplicationContext context = ApplicationContext.Instance;
-
-            return context.GetAll();
+            return this.todoList;
         }
 
         public TodoList Save(TodoList list)
         {
-            ApplicationContext context = ApplicationContext.Instance;
-
-            context.GetAll().Add(list);
+            todoList.Add(list);
             
             return list;
         }

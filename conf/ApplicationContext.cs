@@ -23,7 +23,7 @@ namespace Exercise2.Conf
             this.myLists = new List<TodoList>();
         }
 
-        public List<TodoList> GetAll()
+        public List<TodoList> GetToDoList() //change to getALl
         {
             return this.myLists;
         }
